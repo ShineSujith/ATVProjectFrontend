@@ -1,5 +1,10 @@
+import VideoPlayer from "../components/videoPlayer/VideoPlayer";
+
+
 function HomePage() {
-  return (<div><h1>Testing</h1></div>);
+  return (
+    <VideoPlayer />
+  );
 }
 
 export default HomePage;
