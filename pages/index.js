@@ -1,9 +1,12 @@
 import VideoPlayer from "../components/videoPlayer/VideoPlayer";
+import classes from "../styles/index.module.css"
 
 
 function HomePage() {
   return (
-    <VideoPlayer />
+    <div className={classes.home}>
+      <VideoPlayer />
+    </div>
   );
 }
 
