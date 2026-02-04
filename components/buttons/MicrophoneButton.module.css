@@ -1,0 +1,28 @@
+.mainDiv {
+  padding: 25px 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 46px;
+  width: 100px;
+  height: 100px;
+  background-color: #FF755D;
+  border: 2px solid #444d44;
+  border-radius: 50%;
+  margin: auto;
+  margin-bottom: 5rem;
+  transition: background-color 0.4s;
+}
+
+.iconDiv {
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  color: black;
+  font-size: 50px;
+}
+
+.mainDiv:hover {
+  background-color: #444d44;
+  border: 2px solid #777777;
+}
