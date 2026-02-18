@@ -3,8 +3,34 @@
   height: 5rem;
   display: flex;
   align-items: center;
+  flex-direction: row;
   background-color: rgba(66, 57, 57, 0.85);
   color: white;
-  justify-content: center;
+  justify-content: space-evenly;
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+.thePopup {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(66, 57, 57, 0.85);
+  position: absolute;
+  left: 0px;
+  top: 5rem;
+}
+
+.navBarIcon {
+  height: 35px;
+  width: 50px;
+}
+
+@media only screen and (max-width: 778px) {
+  .header {
+    justify-content: center;
+  }
+
+  .header h1 {
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
