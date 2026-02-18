@@ -3,6 +3,8 @@
   height: 5rem;
   display: flex;
   align-items: center;
-  background-color: #9EB4DE;
+  background-color: rgba(44, 41, 41, 0.85);
+  color: white;
+  justify-content: center;
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
 }
