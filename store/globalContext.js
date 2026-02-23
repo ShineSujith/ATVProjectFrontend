@@ -30,7 +30,14 @@ export function GlobalContextProvider(props) {
     return () => ws.current.close();
   }, []);
 
-  async function editGlobalData(command) {}
+  async function editGlobalData(command) {
+    if (command.cmd == "UpdateQueue") {
+      setGlobals((prev) => ({
+        ...prev,
+        queue: prev.queue.slice(1),
+      }));
+    }
+  }
 
   const context = {
     updateGlobals: editGlobalData,

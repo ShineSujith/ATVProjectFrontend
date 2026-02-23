@@ -6,12 +6,13 @@ function VideoPlayer() {
   const globalCtx = useContext(GlobalContext);
   const videoRef = useRef(null);
   const [current, setCurrent] = useState(null);
+  const [queue, setQueue] = useState([]);
 
   // Start playing when idle
   useEffect(() => {
     if (!current && globalCtx.theGlobalObject.queue.length > 0) {
       setCurrent(globalCtx.theGlobalObject.queue[0]);
-      setQueue((q) => q.slice(1));
+      globalCtx.updateGlobals({ cmd: "UpdateQueue" });
     }
   }, [globalCtx.theGlobalObject.queue, current]);
 
@@ -24,12 +25,17 @@ function VideoPlayer() {
     }
   };
 
-  return(
-      <div className={classes.container}>
-          <video controls preload="auto" ref={videoRef} src={current} autoPlay onEnded={handleEnded}>
-              <source src="test.mp4" type="video/mp4"/> {/*TODO: replace this test video with websocket sent video*/}
-          </video>
-      </div> 
+  return (
+    <div className={classes.container}>
+      <video
+        controls
+        preload="auto"
+        ref={videoRef}
+        src={current}
+        autoPlay
+        onEnded={handleEnded}
+      />
+    </div>
   );
 }
 
