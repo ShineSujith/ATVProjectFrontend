@@ -6,7 +6,6 @@ function VideoPlayer() {
   const globalCtx = useContext(GlobalContext);
   const videoRef = useRef(null);
   const [current, setCurrent] = useState(null);
-  const [queue, setQueue] = useState([]);
 
   // Start playing when idle
   useEffect(() => {
@@ -19,7 +18,7 @@ function VideoPlayer() {
   const handleEnded = () => {
     if (globalCtx.theGlobalObject.queue.length > 0) {
       setCurrent(globalCtx.theGlobalObject.queue[0]);
-      setQueue((q) => q.slice(1));
+      globalCtx.updateGlobals({ cmd: "UpdateQueue" });
     } else {
       setCurrent(null);
     }
