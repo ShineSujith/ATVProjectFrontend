@@ -1,0 +1,38 @@
+.mainDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  background-color: transparent;
+  padding-left: 10px;
+  padding-right: 18px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transition: background-color 0.4s;
+}
+
+.textDiv {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.iconDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: white;
+  width: 50px;
+  height: 35px;
+}
+
+.mainDiv:hover {
+  background-color: #3a413a;
+}
+
+.mainText {
+  color: white;
+  text-align: center;
+  font-size: x-large;
+}

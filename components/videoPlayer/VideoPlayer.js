@@ -24,19 +24,12 @@ function VideoPlayer() {
     }
   };
 
-  return (
-    <div className={classes.container}>
-      <video
-        width="740"
-        height="500"
-        preload="auto"
-        controls
-        ref={videoRef}
-        src={current}
-        autoPlay
-        onEnded={handleEnded}
-      />
-    </div>
+  return(
+      <div className={classes.container}>
+          <video controls preload="auto" ref={videoRef} src={current} autoPlay onEnded={handleEnded}>
+              <source src="test.mp4" type="video/mp4"/> {/*TODO: replace this test video with websocket sent video*/}
+          </video>
+      </div> 
   );
 }
 
