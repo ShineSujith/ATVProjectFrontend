@@ -11,25 +11,30 @@ function VideoPlayer() {
   useEffect(() => {
     if (!current && globalCtx.theGlobalObject.queue.length > 0) {
       setCurrent(globalCtx.theGlobalObject.queue[0]);
-      setQueue((q) => q.slice(1));
+      globalCtx.updateGlobals({ cmd: "UpdateQueue" });
     }
   }, [globalCtx.theGlobalObject.queue, current]);
 
   const handleEnded = () => {
     if (globalCtx.theGlobalObject.queue.length > 0) {
       setCurrent(globalCtx.theGlobalObject.queue[0]);
-      setQueue((q) => q.slice(1));
+      globalCtx.updateGlobals({ cmd: "UpdateQueue" });
     } else {
       setCurrent(null);
     }
   };
 
-  return(
-      <div className={classes.container}>
-          <video controls preload="auto" ref={videoRef} src={current} autoPlay onEnded={handleEnded}>
-              <source src="test.mp4" type="video/mp4"/> {/*TODO: replace this test video with websocket sent video*/}
-          </video>
-      </div> 
+  return (
+    <div className={classes.container}>
+      <video
+        controls
+        preload="auto"
+        ref={videoRef}
+        src={current}
+        autoPlay
+        onEnded={handleEnded}
+      />
+    </div>
   );
 }
 
