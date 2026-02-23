@@ -1,40 +1,23 @@
 import classes from "./VideoPlayer.module.css";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
+import GlobalContext from "../../store/globalContext";
 
 function VideoPlayer() {
+  const globalCtx = useContext(GlobalContext);
   const videoRef = useRef(null);
-  const [queue, setQueue] = useState([]);
   const [current, setCurrent] = useState(null);
-  const ws = useRef(null);
-
-  useEffect(() => {
-    ws.current = new WebSocket("ws://localhost:8000/ws");
-
-    ws.current.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-
-      if (data.type === "video_ready") {
-        const url = `http://localhost:8000/videos/${data.filename}`;
-        console.log(data.filename);
-
-        setQueue((q) => [...q, url]);
-      }
-    };
-
-    return () => ws.current.close();
-  }, []);
 
   // Start playing when idle
   useEffect(() => {
-    if (!current && queue.length > 0) {
-      setCurrent(queue[0]);
+    if (!current && globalCtx.theGlobalObject.queue.length > 0) {
+      setCurrent(globalCtx.theGlobalObject.queue[0]);
       setQueue((q) => q.slice(1));
     }
-  }, [queue, current]);
+  }, [globalCtx.theGlobalObject.queue, current]);
 
   const handleEnded = () => {
-    if (queue.length > 0) {
-      setCurrent(queue[0]);
+    if (globalCtx.theGlobalObject.queue.length > 0) {
+      setCurrent(globalCtx.theGlobalObject.queue[0]);
       setQueue((q) => q.slice(1));
     } else {
       setCurrent(null);
