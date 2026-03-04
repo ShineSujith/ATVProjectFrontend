@@ -6,8 +6,8 @@ function DropDown(props) {
   }
 
   return (
-    <label>
-      <select className={classes.dropDown} onChange={handleChange}>
+    <label className={classes.container}>
+      <select onChange={handleChange}>
         <option value="speech">Speech</option>
         <option value="text">Text</option>
       </select>
