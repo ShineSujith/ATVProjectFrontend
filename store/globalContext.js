@@ -37,6 +37,17 @@ export function GlobalContextProvider(props) {
         queue: prev.queue.slice(1),
       }));
     }
+
+    if (command.cmd == "SendText") {
+      const response = await fetch("/api", {
+        method: "POST",
+        body: JSON.stringify(command.newVal),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      await response.json();
+    }
   }
 
   const context = {
